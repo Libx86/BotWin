@@ -2,7 +2,6 @@
 import telepot
 from telepot.loop import MessageLoop
 import time,os,sys
-from pprint import pprint
 
 
 
@@ -11,7 +10,6 @@ from pprint import pprint
 
 
 def Esegui(messaggio):
-    pprint(messaggio)
     chatId=messaggio["chat"]["id"]
     
     if messaggio['from']['id'] == Id1 or messaggio['from']['id'] == Id2:
@@ -32,6 +30,7 @@ def Esegui(messaggio):
           
           
             if messaggio['text'].startswith('ls'):   #Esegue comando specificato
+                command=messaggio["text"].split("ls")[1]
                 try:
                     outputHelp=os.listdir("")
                     for i in range(len(outputHelp)):
@@ -69,6 +68,15 @@ def Esegui(messaggio):
                 command=messaggio["text"].split("&")[1]
                 try:
                     os.system("start /B "+str(command))
+                    bot.sendMessage(chatId,"Eseguito")
+                    return
+                except Exception as Err:
+                    bot.sendMessage(chatId,"Errore: "+str(Err))
+                    return
+            if(messaggio["text"].startswith("cd")):
+                command=messaggio["text"].split("cd")[1]
+                try:
+                    os.chdir(command)
                     bot.sendMessage(chatId,"Eseguito")
                     return
                 except Exception as Err:
