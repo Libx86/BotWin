@@ -32,9 +32,8 @@ def Esegui(messaggio):
           
           
             if messaggio['text'].startswith('ls'):   #Esegue comando specificato
-                command=messaggio["text"].split("ls")[1]
                 try:
-                    outputHelp=os.listdir(command)
+                    outputHelp=os.listdir("")
                     for i in range(len(outputHelp)):
                         outputHelp[i]=outputHelp[i]+"\n"
                     output="".join(outputHelp)
