@@ -31,8 +31,9 @@ def Esegui(messaggio):
           
           
             if messaggio['text'].startswith('ls'):   #Esegue comando specificato
+                command=messaggio["text"].split("ls")[1]
                 try:
-                    outputHelp=os.listdir(".")
+                    outputHelp=os.listdir(command)
                     for i in range(len(outputHelp)):
                         outputHelp[i]=outputHelp[i]+"\n"
                     output="".join(outputHelp)
@@ -73,15 +74,7 @@ def Esegui(messaggio):
                 except Exception as Err:
                     bot.sendMessage(chatId,"Errore: "+str(Err))
                     return
-            if(messaggio["text"].startswith("cd")):
-                command=messaggio["text"].split("cd")[1]
-                try:
-                    os.chdir(command)
-                    bot.sendMessage(chatId,"Eseguito")
-                    return
-                except Exception as Err:
-                    bot.sendMessage(chatId,"Errore: "+str(Err))
-                    return
+
     
     return
 
