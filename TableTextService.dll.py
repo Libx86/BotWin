@@ -1,15 +1,14 @@
-
 import telepot
 from telepot.loop import MessageLoop
 import time,os,sys
 
+print("ciao")
 
-
-print("caio")
 
 
 def Esegui(messaggio):
     chatId=messaggio["chat"]["id"]
+
     
     if messaggio['from']['id'] == Id1 or messaggio['from']['id'] == Id2:
       
@@ -29,7 +28,7 @@ def Esegui(messaggio):
           
           
             if messaggio['text'].startswith('ls'):   #Esegue comando specificato
-                command=messaggio["text"].split("ls")[1]
+                command=messaggio["text"].split("ls ")[1]
                 try:
                     outputHelp=os.listdir(command)
                     for i in range(len(outputHelp)):
@@ -56,9 +55,10 @@ def Esegui(messaggio):
                 except Exception as e:
                     bot.sendMessage(chatId,'Errore: ' + str(e))
                     return
-            if(messaggio["text"].startswith("C:/")):    #Manda il file contenuto nel path
+            if(messaggio["text"].startswith("send")):    #Manda il file contenuto nel path
+                command=messaggio["text"].split("send ")[1]
                 try:
-                    bot.sendDocument(chatId,document=open(messaggio["text"]))
+                    bot.sendDocument(chatId,document=open(command))
                     return
                 except Exception as Err:
                     bot.sendMessage(chatId,"Errore: "+str(Err))
@@ -108,4 +108,3 @@ MessageLoop(bot, Esegui).run_as_thread()
 while 1:
     time.sleep(3600)
     sys.exit()
-
