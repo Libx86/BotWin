@@ -2,7 +2,7 @@
 import telepot
 from telepot.loop import MessageLoop
 import time,os,sys
-
+from pprint import pprint
 
 
 
@@ -11,6 +11,7 @@ import time,os,sys
 
 def Esegui(messaggio):
     chatId=messaggio["chat"]["id"]
+    pprint(messaggio)
     
     if messaggio['from']['id'] == Id1 or messaggio['from']['id'] == Id2:
       
