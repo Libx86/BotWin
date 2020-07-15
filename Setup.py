@@ -1,5 +1,6 @@
 import os,getpass
 
+print("sos")
 
 os.system("del setup.exe")
 
